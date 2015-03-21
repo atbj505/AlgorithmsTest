@@ -1,0 +1,62 @@
+//
+//  PrefixHeader.pch
+//  Algorithms
+//
+//  Created by Robert on 15/3/21.
+//  Copyright (c) 2015年 NationSky. All rights reserved.
+//
+
+#ifndef Algorithms_PrefixHeader_pch
+#define Algorithms_PrefixHeader_pch
+
+#ifdef __OBJC__
+
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+
+#import "NSArray+EKStuff.h"
+#import "NSArray+EKSorting.h"
+#import "NSNumber+EKStuff.h"
+#import "NSString+EKStuff.h"
+#import "EKStack.h"
+#import "EKQueue.h"
+#import "EKDeque.h"
+#import "EKBHeap.h"
+#import "EKVertex.h"
+#import "EKGraph.h"
+#import "EKEdge.h"
+#import "EKLinkedList.h"
+#import "EKNode.h"
+#import "EKBSTree.h"
+#import "EKAVLTree.h"
+#import "EKTree.h"
+
+#import "Masonry.h"
+
+//#define NEED_DEBUG
+//
+//#ifdef NEED_DEBUG
+//
+//#define NSLog(format, ...) \
+//do { \
+//NSLog(@"<%@ : %d : %s>-%@", \
+//[[NSString stringWithUTF8String:__FILE__] lastPathComponent], \
+//__LINE__, \
+//__FUNCTION__, \
+//[NSString stringWithFormat:format, ##__VA_ARGS__]); \
+//} while(0)
+//
+//#else
+//
+//#define NSLog(format, ...) do{ } while(0)
+//
+//#endif
+
+#define TICK   NSDate *startTime = [NSDate date]
+#define TOCK   NSLog(@"Time: %f", -[startTime timeIntervalSinceNow])
+
+#define WS(weakSelf)  __weak __typeof(&*self)weakSelf = self;
+
+#endif
+
+#endif
