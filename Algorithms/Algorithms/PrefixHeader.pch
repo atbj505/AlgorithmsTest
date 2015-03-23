@@ -16,6 +16,7 @@
 
 #import "NSArray+EKStuff.h"
 #import "NSArray+EKSorting.h"
+#import "NSArray+Search.h"
 #import "NSNumber+EKStuff.h"
 #import "NSString+EKStuff.h"
 #import "EKStack.h"
