@@ -24,6 +24,7 @@
 		5798C1811ABD68D8001F10DF /* Property List.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5798C1801ABD68D8001F10DF /* Property List.plist */; };
 		5798C1871ABFA1BD001F10DF /* NSArray+Search.m in Sources */ = {isa = PBXBuildFile; fileRef = 5798C1861ABFA1BD001F10DF /* NSArray+Search.m */; };
 		5798C1901AC00110001F10DF /* NSMutableArray+Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = 5798C18F1AC00110001F10DF /* NSMutableArray+Sort.m */; };
+		5798C19A1AC01241001F10DF /* BTFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5798C1991AC01241001F10DF /* BTFilter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,8 @@
 		5798C1861ABFA1BD001F10DF /* NSArray+Search.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Search.m"; sourceTree = "<group>"; };
 		5798C18E1AC00110001F10DF /* NSMutableArray+Sort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Sort.h"; sourceTree = "<group>"; };
 		5798C18F1AC00110001F10DF /* NSMutableArray+Sort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Sort.m"; sourceTree = "<group>"; };
+		5798C1981AC01241001F10DF /* BTFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTFilter.h; sourceTree = "<group>"; };
+		5798C1991AC01241001F10DF /* BTFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTFilter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +126,8 @@
 				5798BFC71ABD66A6001F10DF /* AppDelegate.m */,
 				5798BFC91ABD66A6001F10DF /* ViewController.h */,
 				5798BFCA1ABD66A6001F10DF /* ViewController.m */,
+				5798C1981AC01241001F10DF /* BTFilter.h */,
+				5798C1991AC01241001F10DF /* BTFilter.m */,
 				5798C1851ABFA1BD001F10DF /* NSArray+Search.h */,
 				5798C1861ABFA1BD001F10DF /* NSArray+Search.m */,
 				5798C18E1AC00110001F10DF /* NSMutableArray+Sort.h */,
@@ -293,6 +298,7 @@
 				5798C17D1ABD66F9001F10DF /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				5798C17A1ABD66F9001F10DF /* MASViewAttribute.m in Sources */,
 				5798C1771ABD66F9001F10DF /* MASConstraint.m in Sources */,
+				5798C19A1AC01241001F10DF /* BTFilter.m in Sources */,
 				5798C17E1ABD66F9001F10DF /* View+MASAdditions.m in Sources */,
 				5798BFCB1ABD66A6001F10DF /* ViewController.m in Sources */,
 				5798C1781ABD66F9001F10DF /* MASConstraintMaker.m in Sources */,

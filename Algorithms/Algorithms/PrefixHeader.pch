@@ -16,6 +16,7 @@
 
 #import "NSArray+Search.h"
 #import "NSMutableArray+Sort.h"
+#import "BTFilter.h"
 
 #import "Masonry.h"
 

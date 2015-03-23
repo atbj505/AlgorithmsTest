@@ -35,12 +35,12 @@
     self.textField.layer.borderColor = [UIColor redColor].CGColor;
     self.textField.layer.cornerRadius = 3;
     self.textField.layer.masksToBounds = YES;
-    self.textField.text = @"大麻";
+    self.textField.text = @"我去他妈的滚蛋！！！！。。。啊啊啊啊啊";
     [self.view addSubview:self.textField];
     [self.textField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(ws.view).with.offset(100);
         make.centerX.mas_equalTo(ws.view);
-        make.width.mas_equalTo(@100);
+        make.width.mas_equalTo(@250);
         make.height.mas_equalTo(@35);
     }];
 
@@ -125,6 +125,7 @@
 
 - (void)testMethod:(UIButton *)btn {
     NSMutableDictionary *dic = [self.testArray structureTest];
+    [[BTFilter shareBTFilter] keyWordWriteWithDictionary:dic];
     NSString *textString = self.textField.text;
     TICK;
     switch (btn.tag) {
@@ -161,10 +162,8 @@
         case 6:
         {
             NSLog(@"********structure test");
-            NSMutableArray *textArray = [dic valueForKey:[textString substringToIndex:1]];
-            if (textArray) {
-                [textArray halfSearch:textString];
-            }
+            NSString *result = [[BTFilter shareBTFilter] filterWithString:textString];
+            NSLog(@"%@",result);
             break;
         }
     }
