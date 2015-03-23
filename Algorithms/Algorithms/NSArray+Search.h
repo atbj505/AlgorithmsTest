@@ -39,4 +39,11 @@
  */
 - (id)setSearch:(id)object;
 
+/**
+ *  数据结构试验（Dictionary－array）
+ *
+ *  @return dic
+ */
+- (NSMutableDictionary *)structureTest;
+
 @end

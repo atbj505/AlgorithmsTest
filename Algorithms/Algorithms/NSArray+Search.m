@@ -88,4 +88,21 @@
     
     return result;
 }
+
+- (NSMutableDictionary *)structureTest {
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    for (NSString *string in self) {
+        NSString *firstChar = [string substringToIndex:1];
+        if ([[dic allKeys] containsObject:firstChar]) {
+            NSMutableArray *array = [dic valueForKey:firstChar];
+            [array addObject:string];
+            [array bubbleSort];
+        } else {
+            NSMutableArray *array = [NSMutableArray array];
+            [array addObject:string];
+            [dic setValue:array forKey:firstChar];
+        }
+    }
+    return dic;
+}
 @end
