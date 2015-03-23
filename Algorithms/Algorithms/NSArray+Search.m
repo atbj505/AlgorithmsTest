@@ -96,7 +96,6 @@
         if ([[dic allKeys] containsObject:firstChar]) {
             NSMutableArray *array = [dic valueForKey:firstChar];
             [array addObject:string];
-            [array bubbleSort];
         } else {
             NSMutableArray *array = [NSMutableArray array];
             [array addObject:string];

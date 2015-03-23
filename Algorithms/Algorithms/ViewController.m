@@ -24,7 +24,7 @@
     //测试数组初始化
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"Property List" ofType:@"plist"];
     self.testArray = [NSArray arrayWithContentsOfFile:plistPath];
-    
+
     //测试case
     [self addCaseButton];
 }
@@ -143,7 +143,7 @@
         case 3:
         {
             NSLog(@"********Linear search");
-            [self.testArray indexOfObjectViaLinearSearch:textString];
+            [self.testArray linearSearchFor:textString];
             break;
         }
         case 4:
