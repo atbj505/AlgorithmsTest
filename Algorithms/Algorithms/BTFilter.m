@@ -82,25 +82,28 @@ static BTFilter *sharedBTFilter = nil;
     NSString *replaceString;
     //关键字位置
     NSRange range;
+
     for (int i = 0; i < string.length;) {
         //字符关键字过滤
         NSString *subString = [string substringWithRange:NSMakeRange(i, 1)];
         NSMutableArray *array =[self.keyDic valueForKey:subString];
+
         if (array) {
             for (int j = 0; j < array.count; j++) {
                 NSString *keyString = array[j];
                 //取得关键字在文字信息中的range
                 range = [string rangeOfString:keyString];
+
                 if (range.length) {
                     //根据range的长度生成等长代替字符(*)并替代
                     if (replaceString.length < [keyString length]) {
+
                         replaceString = keyString;
                         filter = [@"*" stringByPaddingToLength:range.length withString:@"*" startingAtIndex:0];
-                        //设置步长
                     }
                 }
             }
-            i += range.length;
+            i += replaceString.length;
         }else {
             i ++;
         }
