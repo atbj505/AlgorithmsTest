@@ -103,13 +103,16 @@ static BTFilter *sharedBTFilter = nil;
                     }
                 }
             }
-            i += replaceString.length;
-        }else {
+            if (replaceString) {
+                i += replaceString.length;
+                string = [string stringByReplacingOccurrencesOfString:replaceString withString:filter];
+                replaceString = nil;
+            } else {
+                i ++;
+            }
+        } else {
             i ++;
         }
-    }
-    if (replaceString && filter) {
-        string = [string stringByReplacingOccurrencesOfString:replaceString withString:filter];
     }
     return string;
 }
