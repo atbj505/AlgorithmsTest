@@ -110,13 +110,26 @@
     }];
     
     UIButton *btn6 = [UIButton new];
-    [btn6 setTitle:@"Structure Test" forState:UIControlStateNormal];
+    [btn6 setTitle:@"RTFilter Test1" forState:UIControlStateNormal];
     [btn6 setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     [btn6 addTarget:self action:@selector(testMethod:) forControlEvents:UIControlEventTouchUpInside];
     btn6.tag = 6;
     [self.view addSubview:btn6];
     [btn6 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(btn5).with.offset(GAP);
+        make.centerX.mas_equalTo(ws.view);
+        make.width.mas_equalTo(@150);
+        make.height.mas_equalTo(@30);
+    }];
+    
+    UIButton *btn7 = [UIButton new];
+    [btn7 setTitle:@"RTFilter Test2" forState:UIControlStateNormal];
+    [btn7 setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [btn7 addTarget:self action:@selector(testMethod:) forControlEvents:UIControlEventTouchUpInside];
+    btn7.tag = 7;
+    [self.view addSubview:btn7];
+    [btn7 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(btn6).with.offset(GAP);
         make.centerX.mas_equalTo(ws.view);
         make.width.mas_equalTo(@150);
         make.height.mas_equalTo(@30);
@@ -161,8 +174,15 @@
         }
         case 6:
         {
-            NSLog(@"********structure test");
-            NSString *result = [[BTFilter shareBTFilter] filterWithString:textString];
+            NSLog(@"********RTFilter test1");
+            NSString *result = [[BTFilter shareBTFilter] filterWithStringTest1:textString];
+            NSLog(@"%@",result);
+            break;
+        }
+        case 7:
+        {
+            NSLog(@"********RTFilter test2");
+            NSString *result = [[BTFilter shareBTFilter] filterWithStringTest2:textString];
             NSLog(@"%@",result);
             break;
         }

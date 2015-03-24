@@ -51,7 +51,7 @@ static BTFilter *sharedBTFilter = nil;
  *
  *  @return 过滤后字符
  */
-- (NSString *)filterWithString:(NSString *)string{
+- (NSString *)filterWithStringTest1:(NSString *)string{
     //判断是否存在关键字
     if (!self.keyDic) {
         return string;
@@ -61,7 +61,7 @@ static BTFilter *sharedBTFilter = nil;
     //文字信息转换小写
     copyString = [copyString lowercaseString];
     //关键字替换
-    copyString = [self replaceKeyWordWith:copyString];
+    copyString = [self replaceKeyWordTest1With:copyString];
     //与原始文本信息比对返回最终结果
     if ([[string lowercaseString] isEqualToString:copyString]) {
         return string;
@@ -70,12 +70,30 @@ static BTFilter *sharedBTFilter = nil;
     }
 }
 
+- (NSString *)filterWithStringTest2:(NSString *)string{
+    //判断是否存在关键字
+    if (!self.keyDic) {
+        return string;
+    }
+    
+    NSString *copyString = [string copy];
+    //文字信息转换小写
+    copyString = [copyString lowercaseString];
+    //关键字替换
+    copyString = [self replaceKeyWordTest2With:copyString];
+    //与原始文本信息比对返回最终结果
+    if ([[string lowercaseString] isEqualToString:copyString]) {
+        return string;
+    }else{
+        return copyString;
+    }
+}
 /**
  *  关键字替换算法
  *
  *  @param string 被过滤文字
  */
-- (NSString *)replaceKeyWordWith:(NSString *)string {
+- (NSString *)replaceKeyWordTest1With:(NSString *)string {
     //"*"
     NSString *filter;
     //数组中的过滤字
@@ -89,22 +107,22 @@ static BTFilter *sharedBTFilter = nil;
         NSMutableArray *array =[self.keyDic valueForKey:subString];
 
         if (array) {
-            for (int j = 0; j < array.count; j++) {
-                NSString *keyString = array[j];
+            for (NSString *keyString in array) {
                 //取得关键字在文字信息中的range
                 range = [string rangeOfString:keyString];
 
                 if (range.length) {
-                    //根据range的长度生成等长代替字符(*)并替代
+                    //根据range的长度生成等长代替字符(*)
                     if (replaceString.length < [keyString length]) {
-
                         replaceString = keyString;
                         filter = [@"*" stringByPaddingToLength:range.length withString:@"*" startingAtIndex:0];
                     }
                 }
             }
             if (replaceString) {
+                //步长变为keyString的长度
                 i += replaceString.length;
+                //关键字替换
                 string = [string stringByReplacingOccurrencesOfString:replaceString withString:filter];
                 replaceString = nil;
             } else {
@@ -117,6 +135,27 @@ static BTFilter *sharedBTFilter = nil;
     return string;
 }
 
+
+- (NSString *)replaceKeyWordTest2With:(NSString *)string {
+    for (int i = 0; i < string.length; i++) {
+        NSString *subString = [string substringFromIndex:i];
+        NSString *indexString = [subString substringToIndex:1];
+        NSArray *keyArray = [self.keyDic valueForKey:indexString];
+        if (keyArray) {
+            for (int j = 0; j < subString.length; j++) {
+                NSString *multiSubString = [subString substringToIndex:subString.length - j];
+                NSUInteger index = [keyArray halfSearch:multiSubString];
+                if (index != NSNotFound) {
+                    NSString *filter = [@"*" stringByPaddingToLength:multiSubString.length withString:@"*" startingAtIndex:0];
+                    string = [string stringByReplacingOccurrencesOfString:multiSubString withString:filter];
+                    i += multiSubString.length - 1;
+                    break;
+                }
+            }
+        }
+    }
+    return string;
+}
 /**
  *  读取关键字
  */

@@ -24,7 +24,8 @@
  *
  *  @return 过滤后字符
  */
-- (NSString *)filterWithString:(NSString *)string;
+- (NSString *)filterWithStringTest1:(NSString *)string;
+- (NSString *)filterWithStringTest2:(NSString *)string;
 
 /**
  *  写入关键字
