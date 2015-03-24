@@ -138,16 +138,25 @@ static BTFilter *sharedBTFilter = nil;
 
 - (NSString *)replaceKeyWordTest2With:(NSString *)string {
     for (int i = 0; i < string.length; i++) {
+        //从左侧截取字符串
         NSString *subString = [string substringFromIndex:i];
         NSString *indexString = [subString substringToIndex:1];
+        //获取对应关键字数组
         NSArray *keyArray = [self.keyDic valueForKey:indexString];
+        
         if (keyArray) {
             for (int j = 0; j < subString.length; j++) {
+                //从右侧截取字符串
                 NSString *multiSubString = [subString substringToIndex:subString.length - j];
+                //二分查找对应关键字
                 NSUInteger index = [keyArray halfSearch:multiSubString];
+                
                 if (index != NSNotFound) {
+                    //替换文字为对应长度的"*"
                     NSString *filter = [@"*" stringByPaddingToLength:multiSubString.length withString:@"*" startingAtIndex:0];
                     string = [string stringByReplacingOccurrencesOfString:multiSubString withString:filter];
+                    
+                    //步长变为关键字长度
                     i += multiSubString.length - 1;
                     break;
                 }
