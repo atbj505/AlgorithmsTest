@@ -151,7 +151,7 @@ static BTFilter *sharedBTFilter = nil;
                 //二分查找对应关键字
                 NSUInteger index = [keyArray halfSearch:multiSubString];
                 
-                if (index != NSNotFound && index != 0) {
+                if (index != NSNotFound) {
                     //替换文字为对应长度的"*"
                     NSString *filter = [@"*" stringByPaddingToLength:multiSubString.length withString:@"*" startingAtIndex:0];
                     string = [string stringByReplacingOccurrencesOfString:multiSubString withString:filter];

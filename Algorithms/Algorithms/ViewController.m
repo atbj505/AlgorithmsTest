@@ -35,7 +35,7 @@
     self.textField.layer.borderColor = [UIColor redColor].CGColor;
     self.textField.layer.cornerRadius = 3;
     self.textField.layer.masksToBounds = YES;
-    self.textField.text = @"我去他妈的滚蛋1234abcd啊啊啊啊啊强奸和抢劫";
+    self.textField.text = @"我去他妈的滚蛋1234abcd啊啊啊啊啊强奸和抢劫00000avkilldo000hello";
     [self.view addSubview:self.textField];
     [self.textField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(ws.view).with.offset(100);
