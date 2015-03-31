@@ -26,6 +26,7 @@
  */
 - (NSString *)filterWithStringTest1:(NSString *)string;
 - (NSString *)filterWithStringTest2:(NSString *)string;
+- (NSString *)filterWithStringTest3:(NSString *)string;
 
 /**
  *  写入关键字

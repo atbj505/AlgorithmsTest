@@ -88,6 +88,26 @@ static BTFilter *sharedBTFilter = nil;
         return copyString;
     }
 }
+
+- (NSString *)filterWithStringTest3:(NSString *)string{
+    //判断是否存在关键字
+    if (!self.keyDic) {
+        return string;
+    }
+    
+    NSString *copyString = [string copy];
+    //文字信息转换小写
+    copyString = [copyString lowercaseString];
+    //关键字替换
+    copyString = [self replaceKeyWordTest3With:copyString];
+    //与原始文本信息比对返回最终结果
+    if ([[string lowercaseString] isEqualToString:copyString]) {
+        return string;
+    }else{
+        return copyString;
+    }
+}
+
 /**
  *  关键字替换算法
  *
@@ -135,7 +155,6 @@ static BTFilter *sharedBTFilter = nil;
     return string;
 }
 
-
 - (NSString *)replaceKeyWordTest2With:(NSString *)string {
     for (int i = 0; i < string.length; i++) {
         //从左侧截取字符串
@@ -165,6 +184,26 @@ static BTFilter *sharedBTFilter = nil;
     }
     return string;
 }
+
+- (NSString *)replaceKeyWordTest3With:(NSString *)string {
+    for (int i = 0; i < string.length; i++) {
+        //从左侧截取字符串
+        NSString *subString = [string substringFromIndex:i];
+        NSString *indexString = [subString substringToIndex:1];
+        //获取对应关键字数组
+        NSArray *keyArray = [self.keyDic valueForKey:indexString];
+        
+        if (keyArray) {
+            for (NSString *keyString in keyArray) {
+                NSRange range = [string rangeOfString:keyString options:NSBackwardsSearch range:NSMakeRange(0, string.length) locale:nil];
+                NSLog(@"%d,%d",range.location, range.length);
+            }
+        }
+    }
+    return string;
+
+}
+
 /**
  *  读取关键字
  */

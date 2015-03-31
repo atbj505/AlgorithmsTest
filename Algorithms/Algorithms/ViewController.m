@@ -134,6 +134,19 @@
         make.width.mas_equalTo(@150);
         make.height.mas_equalTo(@30);
     }];
+    
+    UIButton *btn8 = [UIButton new];
+    [btn8 setTitle:@"RTFilter Test3" forState:UIControlStateNormal];
+    [btn8 setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [btn8 addTarget:self action:@selector(testMethod:) forControlEvents:UIControlEventTouchUpInside];
+    btn8.tag = 8;
+    [self.view addSubview:btn8];
+    [btn8 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(btn7).with.offset(GAP);
+        make.centerX.mas_equalTo(ws.view);
+        make.width.mas_equalTo(@150);
+        make.height.mas_equalTo(@30);
+    }];
 }
 
 - (void)testMethod:(UIButton *)btn {
@@ -183,6 +196,13 @@
         {
             NSLog(@"********RTFilter test2");
             NSString *result = [[BTFilter shareBTFilter] filterWithStringTest2:textString];
+            NSLog(@"%@",result);
+            break;
+        }
+        case 8:
+        {
+            NSLog(@"********RTFilter test3");
+            NSString *result = [[BTFilter shareBTFilter] filterWithStringTest3:textString];
             NSLog(@"%@",result);
             break;
         }
