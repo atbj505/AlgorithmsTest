@@ -10,7 +10,8 @@
 
 @interface BTFilter()
 
-@property (nonatomic, copy) NSMutableDictionary *keyDic;
+@property (nonatomic, strong) NSMutableDictionary *keyDic;
+@property (nonatomic, strong) NSArray *keyArray;
 
 @end
 
@@ -108,6 +109,25 @@ static BTFilter *sharedBTFilter = nil;
     }
 }
 
+- (NSString *)filterWithStringTest4:(NSString *)string {
+    //判断是否存在关键字
+    if (!self.keyDic) {
+        return string;
+    }
+    
+    NSString *copyString = [string copy];
+    //文字信息转换小写
+    copyString = [copyString lowercaseString];
+    //关键字替换
+    copyString = [self replaceKeyWordTest4With:copyString];
+    //与原始文本信息比对返回最终结果
+    if ([[string lowercaseString] isEqualToString:copyString]) {
+        return string;
+    }else{
+        return copyString;
+    }
+}
+
 /**
  *  关键字替换算法
  *
@@ -186,6 +206,23 @@ static BTFilter *sharedBTFilter = nil;
 }
 
 - (NSString *)replaceKeyWordTest3With:(NSString *)string {
+    int i =self.keyArray.count - 1;
+    for (; i >= 0; i--) {
+        NSString *keyString = self.keyArray[i];
+        NSString *erxString = [NSString stringWithFormat:@"\\s*%@",keyString];
+        NSRange range = [string rangeOfString:erxString options:NSRegularExpressionSearch];
+        if (range.location != NSNotFound) {
+            NSString *filter = [@"*" stringByPaddingToLength:range.length withString:@"*" startingAtIndex:0];
+            string = [string stringByReplacingCharactersInRange:range withString:filter];
+        } else {
+            
+        }
+    }
+    return string;
+
+}
+
+- (NSString *)replaceKeyWordTest4With:(NSString *)string {
     for (int i = 0; i < string.length; i++) {
         //从左侧截取字符串
         NSString *subString = [string substringFromIndex:i];
@@ -194,14 +231,20 @@ static BTFilter *sharedBTFilter = nil;
         NSArray *keyArray = [self.keyDic valueForKey:indexString];
         
         if (keyArray) {
-            for (NSString *keyString in keyArray) {
-                NSRange range = [string rangeOfString:keyString options:NSBackwardsSearch range:NSMakeRange(0, string.length) locale:nil];
-                NSLog(@"%d,%d",range.location, range.length);
+            for (int i = keyArray.count - 1; i >= 0; i--) {
+                NSString *keyString = keyArray[i];
+                NSString *erxString = [NSString stringWithFormat:@"\\s*%@",keyString];
+                NSRange range = [string rangeOfString:erxString options:NSRegularExpressionSearch];
+                if (range.location != NSNotFound) {
+                    NSString *filter = [@"*" stringByPaddingToLength:range.length withString:@"*" startingAtIndex:0];
+                    string = [string stringByReplacingCharactersInRange:range withString:filter];
+                } else {
+                    i += range.length - 1;
+                }
             }
         }
     }
     return string;
-
 }
 
 /**
@@ -221,6 +264,10 @@ static BTFilter *sharedBTFilter = nil;
     self.keyDic = dic;
 }
 
+- (void)keyWordWriteWithArray:(NSArray *)array {
+    [array writeToFile:[self documentPath] atomically:YES];
+    self.keyArray = array;
+}
 /**
  *  获取用户路径
  *

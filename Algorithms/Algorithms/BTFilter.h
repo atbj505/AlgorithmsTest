@@ -27,6 +27,7 @@
 - (NSString *)filterWithStringTest1:(NSString *)string;
 - (NSString *)filterWithStringTest2:(NSString *)string;
 - (NSString *)filterWithStringTest3:(NSString *)string;
+- (NSString *)filterWithStringTest4:(NSString *)string;
 
 /**
  *  写入关键字
@@ -34,5 +35,6 @@
  *  @param dic 关键字字典
  */
 - (void)keyWordWriteWithDictionary:(NSMutableDictionary *)dic;
+- (void)keyWordWriteWithArray:(NSArray *)array;
 
 @end

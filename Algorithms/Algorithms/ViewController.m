@@ -147,11 +147,25 @@
         make.width.mas_equalTo(@150);
         make.height.mas_equalTo(@30);
     }];
+    
+    UIButton *btn9 = [UIButton new];
+    [btn9 setTitle:@"RTFilter Test4" forState:UIControlStateNormal];
+    [btn9 setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [btn9 addTarget:self action:@selector(testMethod:) forControlEvents:UIControlEventTouchUpInside];
+    btn9.tag = 9;
+    [self.view addSubview:btn9];
+    [btn9 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(btn8).with.offset(GAP);
+        make.centerX.mas_equalTo(ws.view);
+        make.width.mas_equalTo(@150);
+        make.height.mas_equalTo(@30);
+    }];
 }
 
 - (void)testMethod:(UIButton *)btn {
     NSMutableDictionary *dic = [self.testArray structureTest];
     [[BTFilter shareBTFilter] keyWordWriteWithDictionary:dic];
+    [[BTFilter shareBTFilter] keyWordWriteWithArray:self.testArray];
     NSString *textString = self.textField.text;
     TICK;
     switch (btn.tag) {
@@ -203,6 +217,13 @@
         {
             NSLog(@"********RTFilter test3");
             NSString *result = [[BTFilter shareBTFilter] filterWithStringTest3:textString];
+            NSLog(@"%@",result);
+            break;
+        }
+        case 9:
+        {
+            NSLog(@"********RTFilter test4");
+            NSString *result = [[BTFilter shareBTFilter] filterWithStringTest4:textString];
             NSLog(@"%@",result);
             break;
         }
