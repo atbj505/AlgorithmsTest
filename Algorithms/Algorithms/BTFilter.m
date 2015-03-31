@@ -7,6 +7,7 @@
 //
 
 #import "BTFilter.h"
+#import "RegexKitLite.h"
 
 @interface BTFilter()
 
@@ -224,21 +225,22 @@ static BTFilter *sharedBTFilter = nil;
 
 - (NSString *)replaceKeyWordTest4With:(NSString *)string {
     for (int i = 0; i < string.length; i++) {
-        //从左侧截取字符串
-        NSString *subString = [string substringFromIndex:i];
-        NSString *indexString = [subString substringToIndex:1];
+        //获取字典key
+        NSString *indexString = [string substringWithRange:NSMakeRange(i, 1)];
         //获取对应关键字数组
         NSArray *keyArray = [self.keyDic valueForKey:indexString];
         
         if (keyArray) {
-            for (int i = keyArray.count - 1; i >= 0; i--) {
-                NSString *keyString = keyArray[i];
+            for (int j = keyArray.count - 1; j >= 0; j--) {
+                NSString *keyString = keyArray[j];
+                //\\s*
+                //[\s|\S]*
                 NSString *erxString = [NSString stringWithFormat:@"\\s*%@",keyString];
-                NSRange range = [string rangeOfString:erxString options:NSRegularExpressionSearch];
+                NSRange range = [string rangeOfRegex:erxString];
                 if (range.location != NSNotFound) {
                     NSString *filter = [@"*" stringByPaddingToLength:range.length withString:@"*" startingAtIndex:0];
-                    string = [string stringByReplacingCharactersInRange:range withString:filter];
-                } else {
+                    //string = [string stringByReplacingCharactersInRange:range withString:filter];
+                    string = [string stringByReplacingOccurrencesOfString:keyString withString:filter];
                     i += range.length - 1;
                 }
             }

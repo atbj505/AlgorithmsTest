@@ -96,7 +96,7 @@
         if ([[dic allKeys] containsObject:firstChar]) {
             NSMutableArray *array = [dic valueForKey:firstChar];
             [array addObject:string];
-            [array objcSort];
+            [array objcSortByLength];
         } else {
             NSMutableArray *array = [NSMutableArray array];
             [array addObject:string];

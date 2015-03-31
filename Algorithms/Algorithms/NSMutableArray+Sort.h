@@ -18,6 +18,11 @@
 - (void)objcSort;
 
 /**
+ *  根据字符长度排序
+ */
+- (void)objcSortByLength;
+
+/**
  *  选择排序
  *
  *  @return 排序后数组

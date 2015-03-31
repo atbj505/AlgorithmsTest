@@ -21,6 +21,16 @@
     }];
 }
 
+- (void)objcSortByLength {
+    [self sortUsingComparator:^NSComparisonResult(NSString *obj1, NSString *obj2) {
+        if (obj1.length < obj2.length) {
+            return NSOrderedAscending;
+        }else if (obj1.length > obj2.length){
+            return NSOrderedDescending;
+        }
+        return NSOrderedSame;
+    }];
+}
 /**
  *  选择排序
  *

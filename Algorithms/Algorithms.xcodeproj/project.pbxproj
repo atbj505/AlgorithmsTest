@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		578D43FC1ACA8AEC001DF652 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 578D43FB1ACA8AEC001DF652 /* RegexKitLite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		578D43FE1ACA8B37001DF652 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 578D43FD1ACA8B37001DF652 /* libicucore.dylib */; };
 		5798BFC51ABD66A6001F10DF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5798BFC41ABD66A6001F10DF /* main.m */; };
 		5798BFC81ABD66A6001F10DF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5798BFC71ABD66A6001F10DF /* AppDelegate.m */; };
 		5798BFCB1ABD66A6001F10DF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5798BFCA1ABD66A6001F10DF /* ViewController.m */; };
@@ -38,6 +40,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		578D43FA1ACA8AEC001DF652 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
+		578D43FB1ACA8AEC001DF652 /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
+		578D43FD1ACA8B37001DF652 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		5798BFBF1ABD66A6001F10DF /* Algorithms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Algorithms.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5798BFC31ABD66A6001F10DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5798BFC41ABD66A6001F10DF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -87,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				578D43FE1ACA8B37001DF652 /* libicucore.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +109,7 @@
 		5798BFB61ABD66A6001F10DF = {
 			isa = PBXGroup;
 			children = (
+				578D43FD1ACA8B37001DF652 /* libicucore.dylib */,
 				5798BFC11ABD66A6001F10DF /* Algorithms */,
 				5798BFDB1ABD66A6001F10DF /* AlgorithmsTests */,
 				5798BFC01ABD66A6001F10DF /* Products */,
@@ -121,6 +128,8 @@
 		5798BFC11ABD66A6001F10DF /* Algorithms */ = {
 			isa = PBXGroup;
 			children = (
+				578D43FA1ACA8AEC001DF652 /* RegexKitLite.h */,
+				578D43FB1ACA8AEC001DF652 /* RegexKitLite.m */,
 				5798C0ED1ABD66F9001F10DF /* Masonry */,
 				5798BFC61ABD66A6001F10DF /* AppDelegate.h */,
 				5798BFC71ABD66A6001F10DF /* AppDelegate.m */,
@@ -305,6 +314,7 @@
 				5798C1871ABFA1BD001F10DF /* NSArray+Search.m in Sources */,
 				5798C17B1ABD66F9001F10DF /* MASViewConstraint.m in Sources */,
 				5798C17C1ABD66F9001F10DF /* NSArray+MASAdditions.m in Sources */,
+				578D43FC1ACA8AEC001DF652 /* RegexKitLite.m in Sources */,
 				5798C1791ABD66F9001F10DF /* MASLayoutConstraint.m in Sources */,
 				5798C1901AC00110001F10DF /* NSMutableArray+Sort.m in Sources */,
 				5798BFC81ABD66A6001F10DF /* AppDelegate.m in Sources */,
