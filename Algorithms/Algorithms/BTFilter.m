@@ -207,21 +207,29 @@ static BTFilter *sharedBTFilter = nil;
 }
 
 - (NSString *)replaceKeyWordTest3With:(NSString *)string {
-    int i =self.keyArray.count - 1;
-    for (; i >= 0; i--) {
-        NSString *keyString = self.keyArray[i];
-        NSString *erxString = [NSString stringWithFormat:@"\\s*%@",keyString];
-        NSRange range = [string rangeOfString:erxString options:NSRegularExpressionSearch];
-        if (range.location != NSNotFound) {
-            NSString *filter = [@"*" stringByPaddingToLength:range.length withString:@"*" startingAtIndex:0];
-            string = [string stringByReplacingCharactersInRange:range withString:filter];
-        } else {
-            
+    for (int i = 0; i < string.length; i++) {
+        //获取字典key
+        NSString *indexString = [string substringWithRange:NSMakeRange(i, 1)];
+        //获取对应关键字数组
+        NSArray *keyArray = [self.keyDic valueForKey:indexString];
+        
+        if (keyArray) {
+            for (int j = keyArray.count - 1; j >= 0; j--) {
+                NSString *keyString = keyArray[j];
+                //\\s*
+                //[\s|\S]*
+                NSString *erxString = [NSString stringWithFormat:@"\\s*%@",keyString];
+                NSRange range = [string rangeOfRegex:erxString];
+                if (range.location != NSNotFound) {
+                    NSString *filter = [@"*" stringByPaddingToLength:range.length withString:@"*" startingAtIndex:0];
+                    //string = [string stringByReplacingCharactersInRange:range withString:filter];
+                    string = [string stringByReplacingOccurrencesOfString:keyString withString:filter];
+                    i += range.length - 1;
+                }
+            }
         }
     }
-    return string;
-
-}
+    return string;}
 
 - (NSString *)replaceKeyWordTest4With:(NSString *)string {
     for (int i = 0; i < string.length; i++) {
@@ -235,7 +243,7 @@ static BTFilter *sharedBTFilter = nil;
                 NSString *keyString = keyArray[j];
                 //\\s*
                 //[\s|\S]*
-                NSString *erxString = [NSString stringWithFormat:@"\\s*%@",keyString];
+                NSString *erxString = [NSString stringWithFormat:@"[\s|\S]*%@",keyString];
                 NSRange range = [string rangeOfRegex:erxString];
                 if (range.location != NSNotFound) {
                     NSString *filter = [@"*" stringByPaddingToLength:range.length withString:@"*" startingAtIndex:0];
