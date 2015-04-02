@@ -164,7 +164,8 @@ static BTFilter *sharedBTFilter = nil;
                 //步长变为keyString的长度
                 i += replaceString.length;
                 //关键字替换
-                string = [string stringByReplacingOccurrencesOfString:replaceString withString:filter];
+                //string = [string stringByReplacingOccurrencesOfString:replaceString withString:filter];
+                string = [string stringByReplacingCharactersInRange:range withString:filter];
                 replaceString = nil;
             } else {
                 i ++;
@@ -236,7 +237,7 @@ static BTFilter *sharedBTFilter = nil;
         //获取字典key
         NSString *indexString = [string substringWithRange:NSMakeRange(i, 1)];
         //获取对应关键字数组
-        NSArray *keyArray = [self.keyDic valueForKey:indexString];
+        NSArray *keyArray = [self.keyDic objectForKey:indexString];
         
         if (keyArray) {
             for (int j = keyArray.count - 1; j >= 0; j--) {
@@ -255,6 +256,7 @@ static BTFilter *sharedBTFilter = nil;
         }
     }
     return string;
+
 }
 
 /**

@@ -36,7 +36,7 @@
     self.textField.layer.cornerRadius = 3;
     self.textField.layer.masksToBounds = YES;
     //self.textField.text = @"我去他妈的滚蛋1234abcd啊啊啊啊啊强奸和抢劫00000avkilldo000hello";
-    self.textField.text = @"他妈的滚蛋avavxx";
+    self.textField.text = @"你是$逼";
     [self.view addSubview:self.textField];
     [self.textField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(ws.view).with.offset(100);
